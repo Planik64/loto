@@ -1,0 +1,40 @@
+{% extends 'base/include.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+{% endblock %}
+{% block site_heading %}
+{% endblock %}
+{% block site_content %}
+    <section class="banner">
+        <article class="banner-img">
+            <img src="{% static 'euro-2020.jpg' %}">
+        </article>
+        <div class="row">
+            <div class="bet-info">
+                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }} </p>
+                {% if mybet.bet.type == 'type_a' %}
+                    <p class="bet-info-2">{{ mybet.bet.type_a_1_team }}-{{ mybet.bet.type_a_2_team }} </p>
+                {% endif %}
+                {% if mybet.bet.type == 'type_b' %}
+                    <p class="bet-info-2">{{ mybet.bet.type_b_1_team }}-{{ mybet.bet.type_b_2_team }}-{{ mybet.bet.type_b_3_team }}-{{ mybet.bet.type_b_4_team }} </p>
+                {% endif %}
+                {% if mybet.bet.type == 'type_f' %}
+                    <p class="bet-info-2">{{ mybet.bet.type_f_1_team }}-{{ mybet.bet.type_f_2_team }} </p>
+                {% endif %}
+            </div>
+            <div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                {% if mybet.bet.type == 'type_f' %}
+                    {% for name in fteams%}
+                        <input type="radio" class="radio-button" name="type_f_bet_3" value="{{name}}" checked="checked"><label class="bet-info-1">{{name}}</label>
+                    {% endfor %}
+                {% endif %}
+                <button class="button">Запази промените</button>
+            </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

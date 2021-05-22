@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block site_heading %}
+{% endblock %}
+{% block site_content %}
+    <section class="banner">
+
+        <article class="banner-img">
+            <img src="{% static 'euro-2020.jpg' %}">
+        </article>
+
+        <div class="row">
+            <form method="POST" action="{% url 'login user' %}">
+                <input type="hidden" name="return_url" value="{{ request.GET.next }}" />
+                {% csrf_token %}
+                {{ login_form }}
+                <button class="button">Вход</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

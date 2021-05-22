@@ -1,0 +1,23 @@
+{% extends 'base/include.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+{% endblock %}
+{% block site_heading %}
+    <h2>Избери играч</h2>
+{% endblock %}
+{% block site_content %}
+    <section class="banner">
+        <article class="banner-img">
+            <img src="{% static 'euro-2020.jpg' %}">
+        </article>
+
+        <div class="row">
+            <form method="POST" action="{% url 'event' %}">
+                {% csrf_token %}
+                {{ form }}
+                <button class="button">Избери</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

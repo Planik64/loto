@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block styles %}
+{% endblock %}
+{% block site_heading %}
+{% endblock %}
+{% block site_content %}
+    <section class="banner">
+        <article class="banner-img">
+            <img src="{% static 'euro-2020em.jpg' %}">
+        </article>
+
+        <header>
+            <h1>Welcome to Teacher's Game</h1>
+        </header>
+        <article class="row">
+            <article class="col">
+                <p>Already have an account?</p>
+                <a href="{% url 'login user' %}" class="button">Sign in</a>
+            </article>
+            <article class="col">
+                <p>Do not have an account?</p>
+                <a href="" class="button">Sign up</a>
+            </article>
+        </article>
+    </section>
+{% endblock %}

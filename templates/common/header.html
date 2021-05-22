@@ -1,0 +1,47 @@
+<header>
+    <nav class="site-nav">
+        <ul class="list-horizontal">
+            <li class="list-tem {% if current_page == 'home' %} active {% endif %}">
+                <a class="nav-link" href="{% url 'home' %}">Начало</a>
+            </li>
+            {% if user.is_authenticated %}
+
+                <li class="list-tem {% if current_page == 'my bets' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'my bets' %}">Моите залози</a>
+                </li>
+                <li class="list-tem {% if current_page == 'player bets' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'player' %}">Залози на играч</a>
+                </li>
+                <li class="list-tem {% if current_page == 'event bets' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'event' %}">Залози на събитие</a>
+                </li>
+                <li class="list-tem {% if current_page == 'ranking' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'ranking' %}">Класиране</a>
+                </li>
+            {% endif %}
+        </ul>
+
+
+        <ul class="nav-item">
+            {% if user.is_authenticated %}
+                <li class="list-tem">
+                    <span>Здравей, {{ user.username }} !</span>
+                </li>
+                <li class="list-tem {% if current_page == 'update user' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'update user' %}">Моят профил</a>
+                </li>
+                <li class="list-tem {% if current_page == 'change password' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'change password' %}">Смяна парола</a>
+                </li>
+                <li class="list-tem">
+                    <a class="nav-link" href="{% url 'logout user' %}">Изход</a>
+                </li>
+            {% else %}
+                <li class="list-tem">
+                    <a class="nav-link" href="{% url 'login user' %}">Вход</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+</header>

@@ -1,0 +1,61 @@
+{% extends 'base/include.html' %}
+{% load dict_key %}
+{% load add %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ranking.css' %}">
+{% endblock %}
+{% block site_heading %}
+    <h2>Класиране</h2>
+{% endblock %}
+{% block site_content %}
+    <section class="banner">
+        <ul class="list-bets">
+            {% for user in ranking_users %}
+                <li class="list-item">
+                    <div class="ranking-details">
+                    <div class="ranking-name">
+                            {% if user == request.user %}
+                                <p class="name user">{{ forloop.counter|add:ranking_users.start_index }} . {{ user.username }}</p>
+                            {% else %}
+                                <p class="name">{{ forloop.counter|add:ranking_users.start_index }} . {{ user.username }}</p>
+                            {% endif %}
+                    </div>
+                    <div class="ranking-points">
+                         {% if user == request.user %}
+                            <p class="points-1 user"> {{ ranking_list|dict_key:user }}</p>
+                            <p class="points-2 user"> точки</p>
+                        {% else %}
+                             <p class="points-1"> {{ ranking_list|dict_key:user }}</p>
+                            <p class="points-2"> точки</p>
+                        {% endif %}
+                    </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if ranking_users.has_other_pages %}
+            <ul class="pagination">
+                {% if ranking_users.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ ranking_users.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                {% endif %}
+                {% for i in ranking_users.paginator.page_range %}
+                    {% if ranking_users.number == i %}
+                        <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if ranking_users.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ ranking_users.next_page_number }}">&raquo;</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </section>
+{% endblock %}

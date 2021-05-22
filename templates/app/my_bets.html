@@ -1,0 +1,329 @@
+{% extends 'base/include.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/mybets.css' %}">
+{% endblock %}
+{% block site_heading %}
+    <h2>Моите залози</h2>
+{% endblock %}
+{% block site_content %}
+    <section class="banner">
+
+        <ul class="list-bets">
+            {% for mybet in mybets %}
+                <li class="list-item">
+                    {% if mybet.bet.type == 'type_a' %}
+                        <div class="bet-details">
+                            <div class="bet-info">
+                                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }} </p>
+                                <p class="bet-info-2">{{ mybet.bet.type_a_1_team }}-{{ mybet.bet.type_a_2_team }} </p>
+                            </div>
+                            <div class="bet-bets">
+                                <p class="bet-bets-1"> {{ mybet.type_a_bet_1 }}</p>
+                                <p class="bet-bets-3"> : </p>
+                                <p class="bet-bets-2">{{ mybet.type_a_bet_2 }}</p>
+                            </div>
+                        </div>
+                        <div class="bet-bets-edit">
+                            <div class="bets-edit">
+                                {% if mybet.bet.is_possible_edit %}
+                                    <a class="button" href="{% url 'edit bet' mybet.pk %}">
+                                        Промяна
+                                    </a>
+                                {% else %}
+                                    {% if mybet.bet.is_result_a %}
+                                        <p class="result-button">Резултат</p>
+                                    {% else %}
+                                        <p class="result-button">Няма резултат</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="bets-result">
+                            {% if mybet.bet.is_possible_edit %}
+                            {% else %}
+                                {% if mybet.bet.is_result_a %}
+                                    <div class="bet-bets">
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_a_1_result }}</p>
+                                        <p class="bet-bets-3"> : </p>
+                                        <p class="bet-bets-2"> {{ mybet.bet.type_a_2_result }}</p>
+                                    </div>
+                                    <div class="bet-point">
+                                        <p class="result-button">Точки : {{ mybet.points }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if mybet.bet.type == 'type_b' %}
+                        <div class="bet-details">
+                            <div class="bet-info">
+                                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }}</p>
+                            </div>
+                            <div class="bet-bets">
+                                <p class="bet-info-2">{{ mybet.bet.type_b_1_team }}</p>
+                                <p class="bet-bets-1"> {{ mybet.type_b_bet_1 }}</p>
+                                <p class="bet-info-2">{{ mybet.bet.type_b_2_team }}</p>
+                                <p class="bet-bets-1"> {{ mybet.type_b_bet_2 }}</p>
+                                <p class="bet-info-2">{{ mybet.bet.type_b_3_team }}</p>
+                                <p class="bet-bets-1"> {{ mybet.type_b_bet_3 }}</p>
+                                <p class="bet-info-2">{{ mybet.bet.type_b_4_team }}</p>
+                                <p class="bet-bets-1"> {{ mybet.type_b_bet_4 }}</p>
+                            </div>
+                        </div>
+                        <div class="bet-bets-edit">
+                            <div class="bets-edit">
+                                {% if mybet.bet.is_possible_edit %}
+                                    <a class="button" href="{% url 'edit bet' mybet.pk %}">
+                                        Промяна
+                                    </a>
+                                {% else %}
+                                    {% if mybet.bet.is_result_b %}
+                                        <p class="result-button">Резултат</p>
+                                    {% else %}
+                                        <p class="result-button">Няма резултат</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="bets-result">
+                            {% if mybet.bet.is_possible_edit %}
+                            {% else %}
+                                {% if mybet.bet.is_result_b %}
+                                    <div class="bet-bets">
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_b_1_result }}</p>
+                                        <p class="bet-bets-2"> {{ mybet.bet.type_b_2_result }}</p>
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_b_3_result }}</p>
+                                        <p class="bet-bets-2"> {{ mybet.bet.type_b_4_result }}</p>
+                                    </div>
+                                    <div class="bet-point">
+                                        <p class="result-button">Точки : {{ mybet.points }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if mybet.bet.type == 'type_c' %}
+                        <div class="bet-details">
+                            <div class="bet-info">
+                                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }}</p>
+                            </div>
+                            <div class="bet-bets">
+                                <p class="bet-bets-1"> {{ mybet.type_c_bet_1 }}</p>
+                            </div>
+                        </div>
+                        <div class="bet-bets-edit">
+                            <div class="bets-edit">
+                                {% if mybet.bet.is_possible_edit %}
+                                    <a class="button" href="{% url 'edit bet' mybet.pk %}">
+                                        Промяна
+                                    </a>
+                                {% else %}
+                                    {% if mybet.bet.is_result_c %}
+                                        <p class="result-button">Резултат</p>
+                                    {% else %}
+                                        <p class="result-button">Няма резултат</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="bets-result">
+                            {% if mybet.bet.is_possible_edit %}
+                            {% else %}
+                                {% if mybet.bet.is_result_c %}
+                                    <div class="bet-bets">
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_c_result }}</p>
+                                    </div>
+                                    <div class="bet-point">
+                                        <p class="result-button">Точки : {{ mybet.points }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if mybet.bet.type == 'type_d' %}
+                        <div class="bet-details">
+                            <div class="bet-info">
+                                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }}</p>
+                            </div>
+                             <div class="bet-bets">
+                                 <p class="bet-bets-1"> {{ mybet.type_d_bet_1 }}</p>
+                             </div>
+                        </div>
+                        <div class="bet-bets-edit">
+                            <div class="bets-edit">
+                                {% if mybet.bet.is_possible_edit %}
+                                    <a class="button" href="{% url 'edit bet' mybet.pk %}">
+                                        Промяна
+                                    </a>
+                                {% else %}
+                                    {% if mybet.bet.is_result_d %}
+                                        <p class="result-button">Резултат</p>
+                                    {% else %}
+                                        <p class="result-button">Няма резултат</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="bets-result">
+                            {% if mybet.bet.is_possible_edit %}
+                            {% else %}
+                                {% if mybet.bet.is_result_d %}
+                                    <div class="bet-bets">
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_d_result }}</p>
+                                    </div>
+                                    <div class="bet-point">
+                                        <p class="result-button">Точки : {{ mybet.points  }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if mybet.bet.type == 'type_e' %}
+                        <div class="bet-details">
+                            <div class="bet-info">
+                                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }}</p>
+                            </div>
+                            <div class="bet-bets">
+                                <p class="bet-bets-1"> {{ mybet.type_e_bet_1 }}</p>
+                            </div>
+                        </div>
+                        <div class="bet-bets-edit">
+                            <div class="bets-edit">
+                                {% if mybet.bet.is_possible_edit %}
+                                    <a class="button" href="{% url 'edit bet' mybet.pk %}">
+                                        Промяна
+                                    </a>
+                                {% else %}
+                                    {% if mybet.bet.is_result_e %}
+                                        <p class="result-button">Резултат</p>
+                                    {% else %}
+                                        <p class="result-button">Няма резултат</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="bets-result">
+                            {% if mybet.bet.is_possible_edit %}
+                            {% else %}
+                                {% if mybet.bet.is_result_e %}
+                                    <div class="bet-bets">
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_e_result }}</p>
+                                    </div>
+                                    <div class="bet-point">
+                                        <p class="result-button">Точки : {{ mybet.points }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if mybet.bet.type == 'type_f' %}
+                        <div class="bet-details">
+                            <div class="bet-info">
+                                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }} </p>
+                                <p class="bet-info-2">{{ mybet.bet.type_f_1_team }}-{{ mybet.bet.type_f_2_team }} </p>
+                            </div>
+                            <div class="bet-bets">
+                                    <p class="bet-bets-1"> {{ mybet.type_f_bet_1 }}</p>
+                                    <p class="bet-bets-3"> : </p>
+                                    <p class="bet-bets-2">{{ mybet.type_f_bet_2 }}</p>
+                                    <p class="bet-bets-2">{{ mybet.type_f_bet_3 }}</p>
+                            </div>
+                        </div>
+                        <div class="bet-bets-edit">
+                            <div class="bets-edit">
+                                {% if mybet.bet.is_possible_edit %}
+                                    <a class="button" href="{% url 'edit bet' mybet.pk %}">
+                                        Промяна
+                                    </a>
+                                {% else %}
+                                    {% if mybet.bet.is_result_f %}
+                                        <p class="result-button">Резултат</p>
+                                    {% else %}
+                                        <p class="result-button">Няма резултат</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                         <div class="bets-result">
+                            {% if mybet.bet.is_possible_edit %}
+                            {% else %}
+                                {% if mybet.bet.is_result_f %}
+                                    <div class="bet-bets">
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_f_1_result }}</p>
+                                        <p class="bet-bets-3"> : </p>
+                                        <p class="bet-bets-2"> {{ mybet.bet.type_f_2_result }}</p>
+                                        <p class="bet-bets-2"> {{ mybet.bet.type_f_3_result }}</p>
+                                    </div>
+                                    <div class="bet-point">
+                                        <p class="result-button">Точки : {{ mybet.points }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if mybet.bet.type == 'type_g' %}
+                        <div class="bet-details">
+                            <div class="bet-info">
+                                <p class="bet-info-1">{{ mybet.bet.id }}. {{ mybet.bet.name }}</p>
+                            </div>
+                            <div class="bet-bets">
+                                    <p class="bet-bets-1"> {{ mybet.type_g_bet_1 }}</p>
+                            </div>
+                        </div>
+                        <div class="bet-bets-edit">
+                            <div class="bets-edit">
+                                {% if mybet.bet.is_possible_edit %}
+                                    <a class="button" href="{% url 'edit bet' mybet.pk %}">
+                                        Промяна
+                                    </a>
+                                {% else %}
+                                    {% if mybet.bet.is_result_e %}
+                                        <p class="result-button">Резултат</p>
+                                    {% else %}
+                                        <p class="result-button">Няма резултат</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="bets-result">
+                            {% if mybet.bet.is_possible_edit %}
+                            {% else %}
+                                {% if mybet.bet.is_result_g %}
+                                    <div class="bet-bets">
+                                        <p class="bet-bets-1"> {{ mybet.bet.type_g_result }}</p>
+                                    </div>
+                                    <div class="bet-point">
+                                        <p class="result-button">Точки : {{ mybet.points }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        {% if mybets.has_other_pages %}
+            <ul class="pagination">
+                {% if mybets.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ mybets.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                {% endif %}
+                {% for i in mybets.paginator.page_range %}
+                    {% if mybets.number == i %}
+                        <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if mybets.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ mybets.next_page_number }}">&raquo;</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </section>
+{% endblock %}

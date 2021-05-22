@@ -1,0 +1,14 @@
+{% extends 'base/include.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block site_heading %}
+{% endblock %}
+{% block site_content %}
+    <section class="banner">
+        <article class="banner-img">
+            <img src="{% static 'euro-2020em.jpg' %}">
+        </article>
+    </section>
+{% endblock %}
