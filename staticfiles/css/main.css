@@ -1,0 +1,147 @@
+@import 'https://use.fontawesome.com/releases/v5.15.1/css/all.css';
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+* {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+body {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+section header {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin: 25px 0;
+    padding-bottom: 25px;
+}
+
+section header h1 {
+    font-size: 56px;
+    font-weight: 300;
+}
+
+.row {
+    display: flex;
+}
+
+.row .col {
+    flex: 50%;
+    text-align: center;
+}
+.row .col p {
+    margin-bottom: 10px;
+}
+
+.button {
+    display: inline-block;
+    padding: 5px 15px;
+    border-style: none;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgb(1, 131, 162);
+    border-color: rgb(1, 131, 162);
+}
+
+.button:hover {
+    color: #fff;
+    background-color: rgb(198, 214, 81);
+    border-color: rgb(198, 214, 81);
+    cursor: pointer;
+}
+
+
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(1, 131, 162);
+}
+.site-nav ul {
+    display: flex;
+}
+.list-horizontal .list-tem {
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: white;
+}
+
+.active .nav-link {
+    color: rgb(207, 63, 16);
+}
+
+.nav-link:hover {
+    color: rgb(198, 214, 81);
+}
+
+
+.banner {
+    height: 680px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 15px 15px 15px 15px;
+    background-color: white;
+    color: rgb(1, 131, 162);
+}
+.banner-img {
+     text-align: center;
+}
+.banner img {
+    margin-top: 80px;
+    height: 300px;
+
+}
+
+
+#root {
+    width: 1046px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    text-align: center;
+    color: rgb(1, 131, 162);
+    margin-top: 10px;
+}
+
+.nav-footer {
+    background-color: rgb(1, 131, 162);
+    text-align: center;
+}
+
+.text-light{
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family: 'Architects Daughter', cursive;
+    color: white;
+}
+
+.nav-item .list-tem {
+    padding: 10px 5px;
+    font-size: 20px;
+}
+
+.nav-item .list-tem:first-of-type {
+    padding: 5px 10px 10px 10px;
+}
+
+.nav-item .list-tem span {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Architects Daughter', cursive;
+    color: rgb(187, 124, 179);
+}

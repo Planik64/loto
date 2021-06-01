@@ -7,6 +7,7 @@ django-bootstrap3==15.0.0
 django-bootstrap4==3.0.1
 django-fernet-fields==0.6
 django-utils-six==2.0
+gunicorn==20.1.0
 instance==0.0.0.0.0.0a0.dev20210120
 psycopg2==2.8.6
 pycparser==2.20

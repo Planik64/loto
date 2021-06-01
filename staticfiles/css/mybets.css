@@ -1,0 +1,97 @@
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 585px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 15px 15px 15px 15px;
+    background-color: white;
+}
+
+.pagination {
+    display: flex;
+}
+
+.page-item {
+    padding: 5px 10px;
+    border: 1px solid;
+}
+
+.page-item a {
+    text-decoration: none;
+}
+
+.page-item.active {
+    background-color: rgb(1, 131, 162);
+    color: white;
+}
+.list-bets {
+    width: 90%;
+}
+
+.list-item{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+
+
+.bet-details {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bet-info {
+    display: flex;
+}
+
+.bet-info-1 {
+    padding: 5px 5px;
+}
+
+.bet-info-2 {
+    padding: 5px 5px;
+    color: rgb(187, 124, 179);
+}
+
+.bet-bets-edit {
+    flex-basis: 13%;
+    justify-content: center;
+    display: flex;
+
+}
+
+
+.bet-bets {
+    display: flex;
+}
+
+.bet-bets-1,
+.bet-bets-2 {
+    padding: 5px 10px;
+    border: 1px solid;
+    margin: 0px 2px;
+}
+
+.bet-bets-3 {
+     padding: 5px 5px;
+}
+
+.bets-result {
+    flex-basis: 27%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.result-button {
+    padding: 5px 10px;
+    border-style: none;
+    border-radius: 3px;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgb(1, 131, 162);
+    border-color: rgb(1, 131, 162);
+}

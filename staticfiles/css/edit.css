@@ -1,0 +1,53 @@
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 625px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 15px 15px 15px 15px;
+    background-color: white;
+}
+
+.row {
+    align-items: center;
+    margin: 20px 15px;
+    text-align: center;
+}
+
+.bet-info {
+    display: flex;
+}
+
+.bet-info-1 {
+    padding: 5px 5px;
+}
+
+.bet-info-2 {
+    padding: 5px 5px;
+    color: rgb(187, 124, 179);
+}
+
+.bet-bets-edit {
+    display: flex;
+
+}
+
+
+.bet-bets {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.bet-bets-1,
+.bet-bets-2 {
+    padding: 5px 10px;
+    border: 1px solid;
+    font-size: 25px;
+    color: rgb(1, 131, 162);;
+}
+
+.bet-bets-3 {
+     padding: 5px 10px;
+}
