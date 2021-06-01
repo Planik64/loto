@@ -1,6 +1,7 @@
 import instance as instance
 from django import forms
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.forms import models
 
 from loto.loto_app.common import myfunc
@@ -58,6 +59,18 @@ class BbetForm(forms.ModelForm):
                     'type_b_bet_4': '',
                 }
 
+
+    def clean(self):
+        cleaned_data = super().clean()
+        t1 = cleaned_data.get("type_b_bet_1")
+        t2 = cleaned_data.get("type_b_bet_2")
+        t3 = cleaned_data.get("type_b_bet_3")
+        t4 = cleaned_data.get("type_b_bet_4")
+        if t1 and t2 and t3 and t4:
+            if t1 == t2 or t1 == t3 or t1 == t4 or t2 == t3 or t2 == t4 or t3 == t4:
+                raise ValidationError(
+                    "Два или повече отбора имат еднакво класиране"
+                )
 
 class CbetForm(forms.ModelForm):
     class Meta:

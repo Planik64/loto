@@ -125,12 +125,8 @@ STATIC_ROOT = join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     join(BASE_DIR, 'static'),
 )
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CONSTANCE_CONFIG = {
-    'TEAMS': ('TEAMS', 'TEAMS'),
-}

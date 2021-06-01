@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 # Create your views here.
@@ -44,7 +45,7 @@ def mybetsview(request):
         mybets = paginator.page(paginator.num_pages)
     context = {
         'mybets': mybets,
-        'current_page' : 'my bets'
+        'current_page' : 'my bets',
     }
     return render(request, 'app/my_bets.html', context)
 
@@ -109,6 +110,7 @@ def edit_bet(request, pk):
                 mybet.type_f_bet_3 = f_team
                 mybet.save()
                 return redirect('my bets')
+
             context = {
                 'form': form,
                 'mybet': mybet,
@@ -211,7 +213,7 @@ def ranking_view(request):
         for mybet in mybets_list:
             sum_points += mybet.points
         ranking_list[u] = sum_points
-    ranking_list_users = [k for k,v in sorted(ranking_list.items(), key=lambda x: x[1])]
+    ranking_list_users = [k for k,v in sorted(ranking_list.items(), key=lambda x: -x[1])]
     page = request.GET.get('page', 1)
     paginator = Paginator(ranking_list_users, 10)
 
