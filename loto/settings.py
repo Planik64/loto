@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'loto.loto_app',
     'loto.loto_auth',
     'bootstrap3',
+    'django_heroku',
 ]
 
 MIDDLEWARE = [
