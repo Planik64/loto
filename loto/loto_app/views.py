@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
@@ -24,6 +25,7 @@ class HomeView(TemplateView):
 
 
 @login_required
+@transaction.atomic
 def mybetsview(request):
     bets = [x.bet.id for x in Mybet.objects.filter(user=request.user)]
     for bet in Bet.objects.all():
@@ -50,6 +52,7 @@ def mybetsview(request):
     return render(request, 'app/my_bets.html', context)
 
 @login_required
+@transaction.atomic
 def edit_bet(request, pk):
     mybet = Mybet.objects.get(pk=pk)
     if mybet.bet.type == 'type_a':
